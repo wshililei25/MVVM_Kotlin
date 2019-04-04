@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:binding="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="mViewModel"
+                  type="com.flower.user.ui.model.LoginViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+            style="@style/MatchMatch.White"
+            android:background="@drawable/ssssss"
+            android:padding="@dimen/yPadding">
+
+        <ImageView
+                android:id="@+id/mIv"
+                style="@style/WrapWrap"
+                app:layout_constraintTop_toTopOf="@+id/mTitleTv"
+                app:layout_constraintBottom_toBottomOf="@+id/mTitleTv"
+                android:src="@drawable/leftarroww"/>
+
+        <TextView
+                android:id="@+id/mTitleTv"
+                style="@style/WrapWrap"
+                android:text="登陆账户"
+                android:textColor="@color/yWhite"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textSize="@dimen/yTextLargeSize"/>
+
+        <TextView style="@style/WrapWrap"
+                  android:text="注册"
+                  app:layout_constraintTop_toTopOf="@+id/mTitleTv"
+                  app:layout_constraintBottom_toBottomOf="@+id/mTitleTv"
+                  android:textColor="@color/yWhite"
+                  app:layout_constraintRight_toRightOf="parent"
+                  android:textSize="@dimen/yTextBigSize" android:id="@+id/userTextview"/>
+
+        <LinearLayout
+                app:layout_constraintTop_toBottomOf="@+id/mTitleTv"
+                style="@style/MatchWrap.Horizontal"
+                android:layout_marginTop="@dimen/yPaddingBigSmall"
+                android:alpha="0.5"
+                android:background="@drawable/shape_login"
+                android:paddingLeft="@dimen/yPaddingMiddle"
+                android:id="@+id/userLinearlayout">
+
+            <ImageView
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/telephonew"/>
+
+            <EditText
+                    android:id="@+id/mMobileEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/yEditHeight"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:background="@null"
+                    android:hint="请输入电话号码"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:text="@={mViewModel.mPhone}"
+                    android:textColor="@color/yBlackLight"
+                    android:textColorHint="@color/yHint"
+                    android:textSize="@dimen/yTextBigSize"/>
+        </LinearLayout>
+
+        <LinearLayout
+                app:layout_constraintTop_toBottomOf="@+id/userLinearlayout"
+                style="@style/MatchWrap.Horizontal"
+                android:layout_marginTop="@dimen/yPaddingBigSmall"
+                android:alpha="0.5"
+                android:background="@drawable/shape_login"
+                android:paddingLeft="@dimen/yPaddingMiddle"
+                android:id="@+id/pwdView">
+
+            <ImageView
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/unlockw"/>
+
+            <EditText
+                    android:id="@+id/mPswEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/yEditHeight"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:background="@null"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:text="@={mViewModel.mPwd}"
+                    android:textColor="@color/yBlackLight"
+                    android:textColorHint="@color/yHint"
+                    android:textSize="@dimen/yTextBigSize"/>
+        </LinearLayout>
+
+        <Button
+                android:id="@+id/mLoginBtn"
+                app:layout_constraintTop_toBottomOf="@+id/pwdView"
+                style="@style/FullBtnStyle"
+                android:layout_marginTop="@dimen/yPaddingBig"
+                binding:onClickCommand="@{mViewModel.mLoginClickCommand}"
+                android:text="登陆"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>

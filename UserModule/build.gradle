@@ -1,0 +1,27 @@
+apply from: "../module.build.gradle"
+
+android {
+    defaultConfig {
+        //如果是独立模块，则使用当前组件的包名
+        if (isBuildModule.toBoolean()) {
+            applicationId "com.flower.user"
+        }
+    }
+    //统一资源前缀，规范资源引用
+    resourcePrefix "user"
+
+}
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(":BaseModule")
+    kapt rootProject.ext.dependencies["arouter-compiler"]
+    kapt rootProject.ext.support["room-compiler"]
+}
+
+

@@ -1,0 +1,58 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api project(":ResModule")
+
+    api rootProject.ext.support["kotlin"]
+    api rootProject.ext.support["kotlin-reflect"]
+    api rootProject.ext.support["appcompat"]
+    api rootProject.ext.support["constraintlayout"]
+    api rootProject.ext.support["room"]
+    kapt rootProject.ext.support["room-compiler"]
+
+    api rootProject.ext.dependencies["MVVMHabit"]
+    api rootProject.ext.dependencies["arouter"]
+    api rootProject.ext.dependencies["anko-v7"]
+    api rootProject.ext.dependencies["anko-v4"]
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["okhttp3-logging"]
+    api rootProject.ext.dependencies["retrofit2"]
+    api rootProject.ext.dependencies["retrofit2-converter-gson"]
+    api rootProject.ext.dependencies["retrofit2-adapter-rxjava2"]
+    api rootProject.ext.dependencies["rxlifecycle-kotlin"]
+    api rootProject.ext.dependencies["rxlifecycle-components"]
+
+}
+
+//Parcelable序列化插件
+androidExtensions {
+    experimental = true
+}
